@@ -24,16 +24,24 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   label: 'Button',
+  contained: true,
+};
+
+export const TextOnly = Template.bind({});
+TextOnly.args = {
+  label: 'Button',
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
   color: BUTTON_COLORS.primary,
   label: 'Button',
+  contained: true,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   color: BUTTON_COLORS.secondary,
   label: 'Button',
+  contained: true,
 };

@@ -3,3 +3,8 @@ export enum BUTTON_COLORS {
   primary = 'primary',
   secondary = 'secondary'
 }
+
+export enum BUTTON_VARIANTS {
+  default = 'text',
+  contained = 'contained',
+}
