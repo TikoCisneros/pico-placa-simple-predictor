@@ -69,7 +69,7 @@ exports[`PredictorForm test should renders correctly 1`] = `
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
             readonly=""
             type="text"
-            value="June 12th 11:17 pm"
+            value="June 12th 08:17 am"
           />
           <div
             class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
