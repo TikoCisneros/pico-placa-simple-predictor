@@ -32,11 +32,7 @@ const isInRestrictionTimeRange = (date: Date): boolean => {
 };
 
 const canItBeOnRoad = (license: string, date: Date): boolean => {
-  if (isWeekend(date)) {
-    return true;
-  }
-
-  if (isInRestrictionTimeRange(date)) {
+  if (!isWeekend(date) && isInRestrictionTimeRange(date)) {
     const lastLicenseDigit = parseInt(license.charAt(license.length - 1), 10);
     const day = getWeekDay(date);
 
