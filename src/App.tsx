@@ -1,20 +1,21 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
+import React, { useState } from 'react';
+import { DateTimePicker } from '@material-ui/pickers';
+import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
+
 import './App.css';
 import logo from './logo.svg';
 
-function App() {
+const App: React.FC = () => {
+  const [value, setValue] = useState<Date | undefined>(new Date());
+
+  const handleDateChange = (newValue: MaterialUiPickersDate) => setValue(newValue?.toDate());
+
+  console.log(value);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to reload.
-        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -23,12 +24,15 @@ function App() {
         >
           Learn React
         </a>
-        <Button variant="contained" color="primary">
-          Hola Mundo!
-        </Button>
+        <DateTimePicker
+          label="DateTimePicker"
+          inputVariant="outlined"
+          value={value}
+          onChange={handleDateChange}
+        />
       </header>
     </div>
   );
-}
+};
 
 export default App;

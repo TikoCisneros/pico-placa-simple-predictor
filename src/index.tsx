@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
+import PickersProvider from './components/providers/pickersProvider';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PickersProvider>
+      <App />
+    </PickersProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

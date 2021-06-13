@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import Button, { ButtonProps } from './button';
-import { BUTTON_COLORS } from '../../../common/constants';
+import { COLOR_ATTRIB } from '../../../common/constants';
 
 export default {
   title: 'Common/Button',
@@ -10,9 +10,9 @@ export default {
   argTypes: {
     color: {
       options: [
-        BUTTON_COLORS.default,
-        BUTTON_COLORS.primary,
-        BUTTON_COLORS.secondary,
+        COLOR_ATTRIB.default,
+        COLOR_ATTRIB.primary,
+        COLOR_ATTRIB.secondary,
       ],
       control: { type: 'select' },
     },
@@ -34,14 +34,14 @@ TextOnly.args = {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  color: BUTTON_COLORS.primary,
+  color: COLOR_ATTRIB.primary,
   label: 'Button',
   contained: true,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  color: BUTTON_COLORS.secondary,
+  color: COLOR_ATTRIB.secondary,
   label: 'Button',
   contained: true,
 };

@@ -1,4 +1,4 @@
-export enum BUTTON_COLORS {
+export enum COLOR_ATTRIB {
   default = 'default',
   primary = 'primary',
   secondary = 'secondary'
