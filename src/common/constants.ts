@@ -10,13 +10,13 @@ export enum BUTTON_VARIANTS {
 }
 
 export enum WEEK_DAYS {
+  sunday,
   monday,
   tuesday,
   wednesday,
   thursday,
   friday,
   saturday,
-  sunday,
 }
 
 export enum LICENSE_DIGITS {
