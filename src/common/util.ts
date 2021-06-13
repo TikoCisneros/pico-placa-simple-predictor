@@ -22,9 +22,12 @@ const isInRestrictionTimeRange = (date: Date): boolean => {
   const endMorning = alterTimeInDate(date, 9, 30);
   const startAfternoon = alterTimeInDate(date, 16, 0);
   const endAfternoon = alterTimeInDate(date, 19, 30);
+
   return (
     (selectedDate.isAfter(startMorning) && selectedDate.isBefore(endMorning))
+    || selectedDate.isSame(startMorning) || selectedDate.isSame(endMorning)
     || (selectedDate.isAfter(startAfternoon) && selectedDate.isBefore(endAfternoon))
+    || selectedDate.isSame(startAfternoon) || selectedDate.isSame(endAfternoon)
   );
 };
 
