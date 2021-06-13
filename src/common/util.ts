@@ -41,16 +41,11 @@ const canItBeOnRoad = (license: string, date: Date): boolean => {
     const day = getWeekDay(date);
 
     return !(
-      (day === WEEK_DAYS.monday
-      && (lastLicenseDigit === LICENSE_DIGITS.one || lastLicenseDigit === LICENSE_DIGITS.two))
-      || (day === WEEK_DAYS.tuesday
-        && (lastLicenseDigit === LICENSE_DIGITS.three || lastLicenseDigit === LICENSE_DIGITS.four))
-      || (day === WEEK_DAYS.wednesday
-        && (lastLicenseDigit === LICENSE_DIGITS.five || lastLicenseDigit === LICENSE_DIGITS.six))
-      || (day === WEEK_DAYS.thursday
-        && (lastLicenseDigit === LICENSE_DIGITS.seven || lastLicenseDigit === LICENSE_DIGITS.eight))
-      || (day === WEEK_DAYS.friday
-        && (lastLicenseDigit === LICENSE_DIGITS.nine || lastLicenseDigit === LICENSE_DIGITS.zero))
+      (day === WEEK_DAYS.monday && [LICENSE_DIGITS.one, LICENSE_DIGITS.two].includes(lastLicenseDigit))
+      || (day === WEEK_DAYS.tuesday && [LICENSE_DIGITS.three, LICENSE_DIGITS.four].includes(lastLicenseDigit))
+      || (day === WEEK_DAYS.wednesday && [LICENSE_DIGITS.five, LICENSE_DIGITS.six].includes(lastLicenseDigit))
+      || (day === WEEK_DAYS.thursday && [LICENSE_DIGITS.seven, LICENSE_DIGITS.eight].includes(lastLicenseDigit))
+      || (day === WEEK_DAYS.friday && [LICENSE_DIGITS.nine, LICENSE_DIGITS.zero].includes(lastLicenseDigit))
     );
   }
 
