@@ -36,7 +36,7 @@ const PredictorForm: React.FC<PredictorFormProps> = ({
     <Content>
       <Logo src={logo} alt="logo" />
       <Typography variant="h4" color={COLOR_ATTRIB.primary} gutterBottom>
-        Vehicle circulation predictor
+        Car circulation predictor
       </Typography>
       <TextField
         label="License plate"

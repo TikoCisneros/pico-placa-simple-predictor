@@ -16,7 +16,7 @@ exports[`PredictorForm test should renders correctly 1`] = `
       <h4
         class="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary MuiTypography-gutterBottom"
       >
-        Vehicle circulation predictor
+        Car circulation predictor
       </h4>
       <div
         class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
