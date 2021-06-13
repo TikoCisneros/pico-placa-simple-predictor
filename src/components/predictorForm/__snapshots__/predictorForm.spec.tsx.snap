@@ -6,7 +6,7 @@ exports[`PredictorForm test should renders correctly 1`] = `
     class="MuiPaper-root MuiCard-root sc-bdnxRM hppKkw MuiPaper-elevation1 MuiPaper-rounded"
   >
     <div
-      class="MuiCardContent-root sc-gtsrHT ckibhS"
+      class="MuiCardContent-root sc-gtsrHT ejIcrr"
     >
       <img
         alt="logo"
@@ -33,6 +33,7 @@ exports[`PredictorForm test should renders correctly 1`] = `
           <input
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
+            maxlength="7"
             placeholder="e.g. AXC0123"
             type="text"
             value=""

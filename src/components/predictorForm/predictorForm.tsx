@@ -17,10 +17,10 @@ import logo from '../../assets/trafficJam.svg';
 
 export type PredictorFormProps = {
   licensePlate: string;
-  onLicensePlateChange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onLicensePlateChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   dateTime: Date | undefined;
   onDateTimeSelect: (value: MaterialUiPickersDate) => void;
-  onCanRoadClick?: () => void;
+  onCanDriveClick?: () => void;
   onSeeRestrictionsClick?: () => void;
 };
 
@@ -29,7 +29,7 @@ const PredictorForm: React.FC<PredictorFormProps> = ({
   onLicensePlateChange,
   dateTime,
   onDateTimeSelect,
-  onCanRoadClick,
+  onCanDriveClick,
   onSeeRestrictionsClick,
 }) => (
   <Container>
@@ -41,6 +41,7 @@ const PredictorForm: React.FC<PredictorFormProps> = ({
       <TextField
         label="License plate"
         InputLabelProps={{ shrink: true }}
+        inputProps={{ maxlength: 7 }}
         placeholder="e.g. AXC0123"
         margin="normal"
         variant="outlined"
@@ -64,7 +65,7 @@ const PredictorForm: React.FC<PredictorFormProps> = ({
         }}
         fullWidth
       />
-      <Button label="Can I drive?" color={COLOR_ATTRIB.primary} onClick={onCanRoadClick} contained />
+      <Button label="Can I drive?" color={COLOR_ATTRIB.primary} onClick={onCanDriveClick} contained />
       <Button label="Do you know the restrictions yet?" onClick={onSeeRestrictionsClick} />
     </Content>
   </Container>

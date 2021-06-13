@@ -10,7 +10,7 @@ const Content = styled(CardContent)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 15px 30px;
 `;
 
 const LOGO_SIZE = 120;
