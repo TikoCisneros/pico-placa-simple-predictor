@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout test should renders correctly with items 1`] = `<DocumentFragment />`;
+
+exports[`Layout test should renders correctly without items 1`] = `<DocumentFragment />`;
