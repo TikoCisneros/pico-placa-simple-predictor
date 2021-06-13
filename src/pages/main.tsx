@@ -1,29 +1,61 @@
-import React, { useState } from 'react';
-import { DateTimePicker } from '@material-ui/pickers';
+import React, { useReducer } from 'react';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
+import Layout from '../components/common/layout';
+import Modal from '../components/common/modal';
+import PredictorForm from '../components/predictorForm';
+
+import {
+  initialState, reducer,
+  closeModalAction,
+  setDateTimeAction,
+  setLicensePlateAction,
+  showModalAction,
+} from '../reducers/main';
+import { buildModalData } from './util';
+import { MODAL_TYPE } from '../types/main';
 import { canItBeOnRoad } from '../common/util';
 
 const Main: React.FC = () => {
-  const [value, setValue] = useState<Date | undefined>(new Date());
+  const [{
+    licensePlate,
+    openModal,
+    modalData,
+    dateTime,
+  }, dispatch] = useReducer(reducer, initialState);
 
-  const handleDateChange = (newValue: MaterialUiPickersDate) => setValue(newValue?.toDate());
+  const handleDateTimeChange = (newValue: MaterialUiPickersDate) => dispatch(setDateTimeAction(newValue?.toDate()));
 
-  const canIt = canItBeOnRoad('01', value!);
+  const handleCloseModal = () => dispatch(closeModalAction);
+
+  const handleChangeLicense = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { target: { value } } = event;
+    dispatch(setLicensePlateAction(value));
+  };
+
+  const handleSeeRestrictions = () => {
+    const data = buildModalData(MODAL_TYPE.driveInfo);
+    dispatch(showModalAction(data));
+  };
+
+  const handleCanDrive = () => {
+    const canDrive = canItBeOnRoad(licensePlate, dateTime!);
+    const data = buildModalData(MODAL_TYPE.info, canDrive);
+    dispatch(showModalAction(data));
+  };
 
   return (
-    <div style={{ margin: 10 }}>
-      <DateTimePicker
-        label="DateTimePicker"
-        inputVariant="outlined"
-        value={value}
-        onChange={handleDateChange}
-        minDate={new Date()}
+    <Layout>
+      <PredictorForm
+        licensePlate={licensePlate}
+        onLicensePlateChange={handleChangeLicense}
+        dateTime={dateTime}
+        onDateTimeSelect={handleDateTimeChange}
+        onSeeRestrictionsClick={handleSeeRestrictions}
+        onCanDriveClick={handleCanDrive}
       />
-      <br />
-      <br />
-      <strong>{canIt ? 'CAN' : 'CAN NOT'}</strong>
-    </div>
+      <Modal {...modalData} open={openModal} onClose={handleCloseModal} />
+    </Layout>
   );
 };
 
