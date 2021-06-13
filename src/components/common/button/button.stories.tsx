@@ -5,7 +5,7 @@ import Button, { ButtonProps } from './button';
 import { BUTTON_COLORS } from '../../../common/constants';
 
 export default {
-  title: 'Example/Button',
+  title: 'Common/Button',
   component: Button,
   argTypes: {
     color: {
