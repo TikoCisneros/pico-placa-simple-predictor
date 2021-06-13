@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 import PickersProvider from './components/providers/pickersProvider';
-import App from './App';
+import Main from './pages/main';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <PickersProvider>
-      <App />
+      <Main />
     </PickersProvider>
   </React.StrictMode>,
   document.getElementById('root'),
