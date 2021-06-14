@@ -19,18 +19,24 @@ export type PredictorFormProps = {
   licensePlate: string;
   onLicensePlateChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   dateTime: Date | undefined;
+  minDate?: Date | undefined;
   onDateTimeSelect: (value: MaterialUiPickersDate) => void;
   onCanDriveClick?: () => void;
   onSeeRestrictionsClick?: () => void;
+  onLicensePlateFocus?: () => void;
+  error?: boolean;
 };
 
 const PredictorForm: React.FC<PredictorFormProps> = ({
   licensePlate,
   onLicensePlateChange,
   dateTime,
+  minDate,
   onDateTimeSelect,
   onCanDriveClick,
   onSeeRestrictionsClick,
+  onLicensePlateFocus,
+  error,
 }) => (
   <Container>
     <Content>
@@ -41,12 +47,15 @@ const PredictorForm: React.FC<PredictorFormProps> = ({
       <TextField
         label="License plate"
         InputLabelProps={{ shrink: true }}
-        inputProps={{ maxlength: 7 }}
+        inputProps={{ maxLength: 7 }}
         placeholder="e.g. AXC0123"
         margin="normal"
         variant="outlined"
         value={licensePlate}
         onChange={onLicensePlateChange}
+        onFocus={onLicensePlateFocus}
+        error={error}
+        helperText={error && 'Please check correct license place format e.g. IBH2670'}
         fullWidth
       />
       <DateTimePicker
@@ -54,6 +63,7 @@ const PredictorForm: React.FC<PredictorFormProps> = ({
         inputVariant="outlined"
         value={dateTime}
         onChange={onDateTimeSelect}
+        minDate={minDate}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">

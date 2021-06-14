@@ -31,3 +31,6 @@ export enum LICENSE_DIGITS {
   eight,
   nine,
 }
+
+export const TODAY: Date = new Date();
+export const EMPTY_STRING = '';

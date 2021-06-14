@@ -1,3 +1,4 @@
+import { TODAY, EMPTY_STRING } from '../common/constants';
 import {
   Action,
   State,
@@ -5,17 +6,21 @@ import {
   ModalData,
 } from '../types/main';
 
-const EMPTY_STRING = '';
-
 export const initialState: State = {
   modalData: { title: EMPTY_STRING, message: EMPTY_STRING },
   openModal: false,
-  dateTime: new Date(),
-  licensePlate: '',
+  dateTime: TODAY,
+  licensePlate: EMPTY_STRING,
+  incorrectLicense: false,
 };
 
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
+    case ACTION_TYPE.setLicenseError:
+      return {
+        ...state,
+        incorrectLicense: action.payload,
+      };
     case ACTION_TYPE.setLicensePlate:
       return {
         ...state,
@@ -59,4 +64,9 @@ export const closeModalAction: Action = {
 export const showModalAction = (data: ModalData): Action => ({
   type: ACTION_TYPE.openModal,
   payload: data,
+});
+
+export const setLicenseError = (value: boolean): Action => ({
+  type: ACTION_TYPE.setLicenseError,
+  payload: value,
 });

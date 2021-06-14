@@ -11,10 +11,13 @@ import {
   setDateTimeAction,
   setLicensePlateAction,
   showModalAction,
+  setLicenseError,
 } from '../reducers/main';
 import { buildModalData } from './util';
 import { MODAL_TYPE } from '../types/main';
-import { canItBeOnRoad } from '../common/util';
+import { canItBeOnRoad } from '../common/licensePredictor';
+import { isValidLicense } from '../common/util';
+import { TODAY } from '../common/constants';
 
 const Main: React.FC = () => {
   const [{
@@ -22,6 +25,7 @@ const Main: React.FC = () => {
     openModal,
     modalData,
     dateTime,
+    incorrectLicense,
   }, dispatch] = useReducer(reducer, initialState);
 
   const handleDateTimeChange = (newValue: MaterialUiPickersDate) => dispatch(setDateTimeAction(newValue?.toDate()));
@@ -38,11 +42,22 @@ const Main: React.FC = () => {
     dispatch(showModalAction(data));
   };
 
-  const handleCanDrive = () => {
+  const analyzeRestrictions = () => {
     const canDrive = canItBeOnRoad(licensePlate, dateTime!);
     const data = buildModalData(MODAL_TYPE.info, canDrive);
     dispatch(showModalAction(data));
   };
+
+  const handleCanDrive = () => {
+    const isAnLicense = isValidLicense(licensePlate);
+    dispatch(setLicenseError(!isAnLicense));
+
+    if (isAnLicense) {
+      analyzeRestrictions();
+    }
+  };
+
+  const handleLicensePlateFocus = () => dispatch(setLicenseError(false));
 
   return (
     <Layout>
@@ -53,6 +68,9 @@ const Main: React.FC = () => {
         onDateTimeSelect={handleDateTimeChange}
         onSeeRestrictionsClick={handleSeeRestrictions}
         onCanDriveClick={handleCanDrive}
+        onLicensePlateFocus={handleLicensePlateFocus}
+        error={incorrectLicense}
+        minDate={TODAY}
       />
       <Modal {...modalData} open={openModal} onClose={handleCloseModal} />
     </Layout>
